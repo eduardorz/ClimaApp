@@ -8,8 +8,19 @@ const HomeScreen = () => {
   const [clima, setClima] = useState(null);
 
   const obtenerClima = async () => {
-    const datos = await getWeatherData(ciudad);
-    if (datos) setClima(datos);
+    try {
+      console.log("Obteniendo clima para:", ciudad);
+      const datos = await getWeatherData(ciudad);
+      console.log("Datos recibidos en HomeScreen:", datos);
+      
+      if (datos) {
+        setClima(datos);
+      } else {
+        console.warn("No se encontraron datos para:", ciudad);
+      }
+    } catch (error) {
+      console.error("Error obteniendo el clima:", error);
+    }
   };
 
   useEffect(() => {
@@ -26,7 +37,7 @@ const HomeScreen = () => {
         placeholder="Ingresa una ciudad"
       />
       <Button title="Buscar Clima" onPress={obtenerClima} />
-      {clima && <WeatherCard clima={clima} />} 
+      {clima && <WeatherCard weatherData={clima} />} 
     </View>
   );
 };

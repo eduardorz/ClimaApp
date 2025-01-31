@@ -1,10 +1,9 @@
-
-const API_KEY = process.env.OPENWEATHER_API_KEY;
+import { WEATHER_API_KEY } from '@env';
 
 const getWeatherData = async (ciudad) => {
     try {
       const respuesta = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${ciudad}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${ciudad}&aqi=no`
       );
       const datos = await respuesta.json();
       console.log("Datos del clima recibidos:", datos);
@@ -15,4 +14,4 @@ const getWeatherData = async (ciudad) => {
     }
   };
   
-  export default getWeatherData;
+export default getWeatherData;

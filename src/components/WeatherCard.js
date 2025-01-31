@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
 const WeatherCard = ({ weatherData }) => {
-    // Validar si `weatherData` existe antes de acceder a sus propiedades
+  console.log("weatherCard recibió: ", weatherData);
     if (!weatherData || !weatherData.location) {
       return (
         <View style={styles.card}>
@@ -14,11 +14,12 @@ const WeatherCard = ({ weatherData }) => {
     return (
       <View style={styles.card}>
         <Text style={styles.text}>Ciudad: {weatherData.location.name}</Text>
+        <Text style={styles.text}>País: {weatherData.location.country}</Text>
         <Text style={styles.text}>Temperatura: {weatherData.current.temp_c}°C</Text>
         <Text style={styles.text}>Condición: {weatherData.current.condition.text}</Text>
       </View>
     );
-  };
+};
 
 const styles = StyleSheet.create({
   card: {
