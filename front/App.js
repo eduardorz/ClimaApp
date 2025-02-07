@@ -1,11 +1,18 @@
-import React from "react";
-import { SafeAreaView } from "react-native";
-import HomeScreen from "./src/screens/HomeScreen"; 
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from './src/screens/LoginScreen';
+import HomeScreen from './src/screens/HomeScreen';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <HomeScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
