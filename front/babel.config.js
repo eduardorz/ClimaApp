@@ -4,9 +4,12 @@ module.exports = {
     [
       'module:react-native-dotenv',
       {
-        moduleName: '@env', // Aquí se importarán las variables de entorno
-        path: '.env', // Asegúrate de que el archivo .env esté en la raíz del proyecto
+        moduleName: '@env',
+        path: '.env',
       },
     ],
+    ['@babel/plugin-transform-class-properties', { loose: true }],
+    ['@babel/plugin-transform-private-methods', { loose: true }],
+    ['@babel/plugin-transform-private-property-in-object', { loose: true }],
   ],
 };
